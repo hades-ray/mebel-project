@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Montserrat';
+    width: 90%;
+    margin: auto;
+    background-color: #4d3618;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+header {
+    padding-top: 50px;
+    height: 10vh;
+    color: white;
+    font-size: 25px;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.link a {
+    padding: 10px 20px;
+    background-color: wheat;
+    border-radius: 12px;
+    color: black;
+}
+
+#form-link {
+    margin-right: 75px;
+}
+
+.about-us {
+    font-size: 32px;
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 75px;
+}
+
+/*общий стиль*/
+.product {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50vh;
+    gap: 50px;
+    position: relative;
+    min-height: 300px; 
+}
+
+
+/*для фото слева*/
+#left-page {
+    width: 30%;
+    transition: all 0.3s ease;
+}
+
+#left-page img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#right-page {
+    width: 70%; 
+    opacity: 0; 
+    transform: translateX(-20px);
+    transition: all 0.4s ease;
+    visibility: hidden; 
+}
+
+.product:hover #right-page {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+}
+
+/*для фото справа*/
+#left-page-text {
+    width: 70%; 
+    opacity: 0;
+    transform: translateX(20px); 
+    transition: all 0.4s ease;
+    visibility: hidden; 
+    text-align: right;
+}
+
+.product:hover #left-page-text {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+}
+
+#right-page-photo {
+    width: 30%;
+    transition: all 0.3s ease; 
+}
+
+#right-page-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
