@@ -24,17 +24,17 @@ body {
     height: 13vh;
 }
 
-.form {
+.auth {
     background-color: rgb(238, 238, 238);
     border-radius: 50px;
-    height: 80vh;
+    height: 50vh;
     margin-top: 10vh;
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
-.input {
+#input {
     width: 80%;
     margin-left: 10%;
     outline: none;
@@ -45,16 +45,6 @@ body {
     border-radius: 12px;
 }
 
-input[name='name'] {
-    margin-top: 50px;
-}
-
-#btn {
-    
-    transition: all 200ms;
-}
-
-#btn:hover {
-    background-color: #9b9b9b;
-    color: white;
+input[name="username"] {
+    margin-top: 25px;
 }
