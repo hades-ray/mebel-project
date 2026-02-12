@@ -24,11 +24,18 @@ body {
     height: 13vh;
 }
 
+#text {
+    margin-top: 50px;
+    text-align: center;
+}
+
 .form {
     background-color: rgb(238, 238, 238);
+    width: 50%;
+    margin: auto;
     border-radius: 50px;
-    height: 80vh;
-    margin-top: 10vh;
+    height: 50vh;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -43,6 +50,9 @@ body {
     font-family: 'Montserrat';
     background-color: #dbdbdb;
     border-radius: 12px;
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 input[name='name'] {
@@ -50,8 +60,8 @@ input[name='name'] {
 }
 
 #btn {
-    
     transition: all 200ms;
+    margin-top: 100px;
 }
 
 #btn:hover {

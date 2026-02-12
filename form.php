@@ -6,7 +6,7 @@ if(isset($_POST['btn'])){
 	$phone=$_POST['phone'];
 	$product=$_POST['product'];
 	$date = date('Y-m-d H:i:s'); // Формат: 2024-01-15 14:30:45
-    mysqli_query($db, "INSERT INTO orders VALUES ('', '$name', '$phone', '$product', '$date', 'В обработке')");
+    mysqli_query($db, "INSERT INTO orders VALUES ('', '$name', '$phone', '$product', '$date', 'В обработке', '')");
 }
 ?>
 
@@ -22,14 +22,15 @@ if(isset($_POST['btn'])){
     <div class="logo">
         <a href="index.html"><img src="img/logo.jpg" alt="ЛОГО"></a>
     </div>
+    <h2 id="text">Здесь вы можете оставить заявку, наш менеджер свяжется с вами в ближайшее время</h2>
     <form class="form" method="post">
-        <input class="input" id="input" type="text" name="name" placeholder="Введите имя">
-        <input class="input" id="input" type="phone" name="phone" placeholder="Введите номер телефона">
+        <input required class="input" type="text" name="name" placeholder="Введите имя">
+        <input required class="input" type="phone" name="phone" placeholder="Введите номер телефона">
         <select class="input" name="product">
-            <option value="Диван">Диван</option>
+            <option value="Угловой диван">Угловой диван</option>
             <option value="Кресло">Кресло</option>
-            <option value="Кухонный стол">Кухонный стол</option>
-            <option value="Комплект стульев">Комплект стульев</option>
+            <option value="Офисное кресло">Офисное кресло</option>
+            <option value="Обеденный стол">Обеденный стол</option>
         </select>
         <button class="input" id="btn" name="btn" type="submit">Отправить зявку</button>
     </form>

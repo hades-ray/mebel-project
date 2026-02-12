@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `product` text NOT NULL,
   `date` datetime NOT NULL,
   `status` enum('В обработке','Одобрен') NOT NULL DEFAULT 'В обработке',
+  `update_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

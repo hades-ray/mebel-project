@@ -1,4 +1,5 @@
 <?php
+session_start();
 $db=mysqli_connect("localhost","root","","mebel");
 
 if(isset($_POST['auth'])){

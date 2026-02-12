@@ -1,9 +1,13 @@
 <?php
+session_start();
 $db=mysqli_connect("localhost","root","","mebel");
 
+$username=$_SESSION['username'];
 if(isset($_POST['approve'])) {
-    $order_id = $_POST['order_id'];
-    mysqli_query($db, "UPDATE orders SET status='Одобрен' WHERE id='$order_id'");
+    $order_id = mysqli_real_escape_string($db, $_POST['order_id']);
+    $date = date('Y-m-d H:i:s');
+    
+    mysqli_query($db, "UPDATE orders SET status='Одобрен', update_date='$date' WHERE id='$order_id'");
 }
 
 ?>
@@ -20,6 +24,10 @@ if(isset($_POST['approve'])) {
     <div class="logo">
         <a href="index.html"><img src="img/logo.jpg" alt="ЛОГО"></a>
     </div>
+    <div class="text">
+        <h2>Вы авторизированы как: <?php echo $username=$_SESSION['username'];?></h2>
+        <h3>Проверьте новые заявки</h3>
+    </div>
     <table>
         <tr>
             <th>Номер заказа</th>
@@ -27,10 +35,11 @@ if(isset($_POST['approve'])) {
             <th>Телефон</th>
             <th>Дата</th>
             <th>Статус</th> 
+            <th>Время обработки</th>
             <th>Действие</th> 
         </tr>
         <?php
-            $sql=mysqli_query($db, 'Select * from orders');
+            $sql=mysqli_query($db, 'SELECT * FROM orders ORDER BY date DESC');
             while($res=mysqli_fetch_array($sql)){
         ?>
         <tr>
@@ -38,12 +47,28 @@ if(isset($_POST['approve'])) {
             <td><?php echo $res['name'] ?></td>
             <td><?php echo $res['phone'] ?></td>
             <td><?php echo $res['date'] ?></h3>
-            <td><?php echo $res['status'] ?></td>
+            <td id=status><?php echo $res['status'] ?></td>
             <td>
+                <?php 
+                if($res['status'] == 'В обработке') {
+                    echo '';
+                } else {
+                    echo $res['update_date'];
+                }
+                ?>
+            </td>
+            <td>
+                <?php if($res['status'] == 'В обработке'): ?>
                 <form method="POST">
                     <input type="hidden" name="order_id" value="<?php echo $res['id']; ?>">
-                    <button type="submit" name="approve">Одобрить</button>
+                    <button type="submit" name="approve" id="approve">Одобрить</button>
                 </form>
+            <?php else: ?>
+                <!-- Для одобренных заказов показываем статичный текст -->
+                <span style="color: green;">✓ Одобрено</span>
+                <!-- Или можно скрыть кнопку полностью -->
+                <!-- <span>Обработано</span> -->
+            <?php endif; ?>
             </td>
         </tr>
         <?php
