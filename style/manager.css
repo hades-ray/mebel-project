@@ -37,3 +37,8 @@ th, td {
 th {
     background-color: #f2f2f22a; /* фон для заголовков */
 }
+
+.btn {
+    display: flex;
+    flex-direction: column;
+}

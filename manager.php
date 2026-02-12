@@ -1,7 +1,9 @@
 <?php
 $db=mysqli_connect("localhost","root","","mebel");
-if(isset($_POST['aprove'])){
 
+if(isset($_POST['approve'])) {
+    $order_id = $_POST['order_id'];
+    mysqli_query($db, "UPDATE orders SET status='Одобрен' WHERE id='$order_id'");
 }
 
 ?>
@@ -25,23 +27,28 @@ if(isset($_POST['aprove'])){
             <th>Телефон</th>
             <th>Дата</th>
             <th>Статус</th> 
+            <th>Действие</th> 
         </tr>
         <?php
             $sql=mysqli_query($db, 'Select * from orders');
             while($res=mysqli_fetch_array($sql)){
         ?>
-            <tr>
-                <td><?php echo $res['id'] ?></td>
-                <td><?php echo $res['name'] ?></td>
-                <td><?php echo $res['phone'] ?></td>
-                <td><?php echo $res['date'] ?></h3>
-                <td><?php echo $res['status'] ?></td>
-            </tr>
-            <button type="submit" name="aprove">Одобрить</button>
+        <tr>
+            <td><?php echo $res['id'] ?></td>
+            <td><?php echo $res['name'] ?></td>
+            <td><?php echo $res['phone'] ?></td>
+            <td><?php echo $res['date'] ?></h3>
+            <td><?php echo $res['status'] ?></td>
+            <td>
+            <form method="POST">
+                <input type="hidden" name="order_id" value="<?php echo $res['id']; ?>">
+                <button type="submit" name="approve">Одобрить</button>
+            </form>
+        </td>
+        </tr>
         <?php
             }
         ?>
-        
     </table>
 </body>
 </html>
