@@ -1,5 +1,7 @@
 <?php
-$db=mysqli_connect("localhost","root","","mebel");
+$db=mysqli_connect("localhost","root","","mebel");if(isset($_POST['aprove'])){
+
+}
 
 ?>
 
@@ -34,6 +36,7 @@ $db=mysqli_connect("localhost","root","","mebel");
                 <td><?php echo $res['date'] ?></h3>
                 <td><?php echo $res['status'] ?></td>
             </tr>
+            <button type="submit" name="aprove">Одобрить</button>
         <?php
             }
         ?>
