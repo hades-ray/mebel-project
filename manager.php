@@ -40,15 +40,16 @@ if(isset($_POST['approve'])) {
             <td><?php echo $res['date'] ?></h3>
             <td><?php echo $res['status'] ?></td>
             <td>
-            <form method="POST">
-                <input type="hidden" name="order_id" value="<?php echo $res['id']; ?>">
-                <button type="submit" name="approve">Одобрить</button>
-            </form>
-        </td>
+                <form method="POST">
+                    <input type="hidden" name="order_id" value="<?php echo $res['id']; ?>">
+                    <button type="submit" name="approve">Одобрить</button>
+                </form>
+            </td>
         </tr>
         <?php
             }
         ?>
     </table>
 </body>
+
 </html>
